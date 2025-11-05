@@ -130,7 +130,7 @@ function showImage() {
   if (!img) return;
 
   lightboxImg.src = img.src;
-  captionText.textContent = img.alt || '';
+  captionText.textContent =  '';
 }
 
 // === TUTUP LIGHTBOX ===
