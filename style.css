@@ -621,6 +621,4 @@ footer {
 
 body.lightbox-active {
   overflow: hidden;
-  filter: blur(5px);
-  transition: filter 0.3s ease;
 }
