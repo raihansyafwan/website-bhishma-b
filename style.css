@@ -448,3 +448,75 @@ footer {
     padding: 20px;
     font-size: 0.9em;
 }
+
+/* ================================================= */
+/* === FINAL MOBILE RESPONSIVENESS (MAX-WIDTH: 768PX) === */
+/* ================================================= */
+
+@media screen and (max-width: 768px) {
+    
+    /* ---------------------------------------------------- */
+    /* POIN A: GLOBAL ADJUSTMENTS (Header, Section, Hero, Stats) */
+    /* ---------------------------------------------------- */
+    
+    /* Kurangi padding horizontal agar konten tidak terlalu rapat di tepi HP */
+    section {
+        padding: 50px 20px; 
+    }
+
+    /* Header lebih kecil */
+    header {
+        padding: 15px 20px; 
+    }
+    
+    /* Sembunyikan navigasi desktop (siap untuk diganti menu hamburger) */
+    nav ul {
+        display: none; 
+    }
+    
+    /* Kecilkan judul utama agar tidak terlalu besar di HP */
+    .hero h1 {
+        font-size: 3em; 
+    }
+    
+    /* Ubah Statistik menjadi kolom (menumpuk secara vertikal) */
+    .stats-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 20px;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* POIN B: ANGGOTA KELAS ADJUSTMENTS */
+    /* ---------------------------------------------------- */
+
+    /* Ubah tata letak flex Anggota Kelas menjadi kolom */
+    .member-grid {
+        flex-direction: column; 
+    }
+    
+    /* Jadikan card Anggota Kelas memenuhi lebar container (100%) */
+    .member-card {
+        width: 100%; 
+        max-width: 400px; /* Batas maksimum agar tetap rapi di tengah */
+        margin: 0 auto; 
+    }
+
+    /* ---------------------------------------------------- */
+    /* POIN C: VERIFIKASI GRID (Struktur Kelas & Gallery) */
+    /* ---------------------------------------------------- */
+    
+    /* (Catatan: Kode ini tidak perlu dimasukkan di sini karena Anda sudah punya */
+    /* media query 768px dan 480px di bagian Structure/Gallery di atas) */
+
+}
+
+/* Media Query untuk HP kecil (480px) */
+@media (max-width: 480px) {
+    .cards-grid {
+        /* Di layar ponsel, ubah Struktur Kelas menjadi 1 kolom penuh */
+        grid-template-columns: 1fr;
+    }
+    
+    /* Tambahkan penyesuaian 480px lainnya di sini jika perlu */
+}
