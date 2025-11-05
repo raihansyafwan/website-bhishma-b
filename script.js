@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Buka lightbox saat klik gambar
   galleryImages.forEach((img, index) => {
     img.addEventListener('click', () => {
-      lightbox.style.display = 'flex';
+      lightbox.classList.add('show');
       document.body.classList.add('lightbox-active');
       currentIndex = index;
       showImage();
@@ -132,14 +132,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Tutup lightbox
   closeBtn.onclick = () => {
-    lightbox.style.display = 'none';
+    lightbox.classList.remove('show');
     document.body.classList.remove('lightbox-active');
   };
 
   // Klik area luar untuk menutup
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) {
-      lightbox.style.display = 'none';
+      lightbox.classList.remove('show');
       document.body.classList.remove('lightbox-active');
     }
   });

@@ -542,7 +542,7 @@ footer {
 
 /* ===== MODERN LIGHTBOX ===== */
 .lightbox {
-  display: none !important;
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -561,6 +561,12 @@ footer {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease;
   animation: zoomIn 0.25s ease;
+}
+
+/* Saat lightbox aktif */
+.lightbox.show {
+  display: flex;
+  animation: fadeIn 0.3s ease;
 }
 
 @keyframes zoomIn {
