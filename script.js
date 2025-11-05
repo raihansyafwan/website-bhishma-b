@@ -103,7 +103,8 @@ const closeBtn = document.querySelector('.lightbox-btn.close');
 const nextLightboxBtn = document.querySelector('.lightbox-btn.next');
 const prevLightboxBtn = document.querySelector('.lightbox-btn.prev');
 
-const galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
+// ✅ lebih aman: ambil semua gambar di dalam .gallery
+const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
 let currentIndex = 0;
 
 // Buka lightbox saat klik gambar
@@ -118,6 +119,7 @@ galleryImages.forEach((img, index) => {
 
 function showImage() {
   const img = galleryImages[currentIndex];
+  if (!img) return;
   lightboxImg.src = img.src;
   captionText.innerHTML = img.alt || '';
 }
@@ -137,13 +139,13 @@ lightbox.addEventListener('click', (e) => {
 });
 
 // Tombol next & prev
-nextBtn.addEventListener('click', (e) => {
+nextLightboxBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   currentIndex = (currentIndex + 1) % galleryImages.length;
   showImage();
 });
 
-prevBtn.addEventListener('click', (e) => {
+prevLightboxBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
   showImage();
@@ -164,3 +166,4 @@ document.addEventListener('keydown', (e) => {
     }
   }
 });
+
