@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevLightboxBtn = document.querySelector('.lightbox-btn.prev');
 
   // ✅ ambil semua gambar di dalam section gallery
-  const galleryImages = Array.from(document.querySelectorAll('#gallery img'));
+  const galleryImages = Array.from(document.querySelectorAll('#gallery'));
   let currentIndex = 0;
 
   if (galleryImages.length === 0) {
