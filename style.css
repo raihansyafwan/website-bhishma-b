@@ -622,3 +622,8 @@ footer {
 body.lightbox-active {
   overflow: hidden;
 }
+
+#caption {
+  display: none;
+}
+
