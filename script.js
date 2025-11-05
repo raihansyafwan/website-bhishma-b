@@ -95,83 +95,83 @@ prevBtn.addEventListener('click', () => {
 displayMembers(currentPage);
 updatePaginationButtons();
 
-// ==== MODERN LIGHTBOX FUNCTIONALITY ====
-document.addEventListener("DOMContentLoaded", () => {
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const captionText = document.getElementById('caption');
-  const closeBtn = document.querySelector('.lightbox-btn.close');
-  const nextLightboxBtn = document.querySelector('.lightbox-btn.next');
-  const prevLightboxBtn = document.querySelector('.lightbox-btn.prev');
+// ==== LIGHTBOX FUNCTIONALITY (FINAL FIXED VERSION) ====
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const captionText = document.getElementById('caption');
+const closeBtn = document.querySelector('.lightbox-btn.close');
+const nextLightboxBtn = document.querySelector('.lightbox-btn.next');
+const prevLightboxBtn = document.querySelector('.lightbox-btn.prev');
 
-  // ✅ ambil semua gambar di dalam section gallery
-  const galleryImages = Array.from(document.querySelectorAll('#gallery'));
-  let currentIndex = 0;
+const galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
+let currentIndex = 0;
 
-  if (galleryImages.length === 0) {
-    console.warn("⚠️ Tidak ada gambar ditemukan dalam #gallery");
-    return;
-  }
-
-  // Buka lightbox saat klik gambar
-  galleryImages.forEach((img, index) => {
-    img.addEventListener('click', () => {
-      lightbox.classList.add('show');
-      document.body.classList.add('lightbox-active');
-      currentIndex = index;
-      showImage();
-    });
-  });
-
-  function showImage() {
-    const img = galleryImages[currentIndex];
-    if (!img) return;
-    lightboxImg.src = img.src;
-    captionText.textContent = img.alt || '';
-  }
-
-  // Tutup lightbox
-  closeBtn.onclick = () => {
-    lightbox.classList.remove('show');
-    document.body.classList.remove('lightbox-active');
-  };
-
-  // Klik area luar untuk menutup
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.remove('show');
-      document.body.classList.remove('lightbox-active');
+// === BUKA LIGHTBOX ===
+galleryImages.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    // Pastikan gambar bisa diakses
+    if (!img.src) {
+      console.error('❌ Gambar tidak ditemukan untuk index:', index);
+      return;
     }
-  });
 
-  // Tombol next & prev
-  nextLightboxBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    currentIndex = (currentIndex + 1) % galleryImages.length;
+    currentIndex = index;
     showImage();
-  });
 
-  prevLightboxBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-    showImage();
-  });
-
-  // Navigasi keyboard
-  document.addEventListener('keydown', (e) => {
-    if (lightbox.style.display === 'flex') {
-      if (e.key === 'ArrowRight') {
-        currentIndex = (currentIndex + 1) % galleryImages.length;
-        showImage();
-      } else if (e.key === 'ArrowLeft') {
-        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-        showImage();
-      } else if (e.key === 'Escape') {
-        lightbox.style.display = 'none';
-        document.body.classList.remove('lightbox-active');
-      }
-    }
+    // Tampilkan lightbox
+    lightbox.classList.add('show');
+    document.body.classList.add('lightbox-active');
   });
 });
 
+// === TAMPILKAN GAMBAR YANG DIPILIH ===
+function showImage() {
+  const img = galleryImages[currentIndex];
+  if (!img) return;
 
+  lightboxImg.src = img.src;
+  captionText.textContent = img.alt || '';
+}
+
+// === TUTUP LIGHTBOX ===
+closeBtn.addEventListener('click', () => {
+  lightbox.classList.remove('show');
+  document.body.classList.remove('lightbox-active');
+});
+
+// === NAVIGASI NEXT & PREV ===
+nextLightboxBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % galleryImages.length;
+  showImage();
+});
+
+prevLightboxBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+  showImage();
+});
+
+// === KLIK DI LUAR GAMBAR UNTUK TUTUP ===
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) {
+    lightbox.classList.remove('show');
+    document.body.classList.remove('lightbox-active');
+  }
+});
+
+// === NAVIGASI KEYBOARD ===
+document.addEventListener('keydown', (e) => {
+  if (lightbox.classList.contains('show')) {
+    if (e.key === 'ArrowRight') {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      showImage();
+    } else if (e.key === 'ArrowLeft') {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      showImage();
+    } else if (e.key === 'Escape') {
+      lightbox.classList.remove('show');
+      document.body.classList.remove('lightbox-active');
+    }
+  }
+});
