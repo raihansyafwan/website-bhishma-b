@@ -66,6 +66,44 @@ nav ul li a:hover {
     color: var(--primary-blue);
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.header-logos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-logos .mini-logo {
+  height: 35px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+
 /* BAGIAN HERO */
 .hero {
     /* Ganti background dengan gambar Anda */
