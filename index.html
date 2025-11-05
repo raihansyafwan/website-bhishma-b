@@ -472,7 +472,7 @@
         </div>
         
         <div class="gallery-item">
-            <img src="images/foto-studio.jpg" alt="Momen">
+            <img src="images/foto-studio.jpg" alt="Momen"onclick="openLightbox(this)">
             <div class="caption">
                 <h4>Foto Studio</h4>
             </div>
@@ -511,5 +511,10 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <div id="lightbox" class="lightbox-hidden">
+    <span class="close-btn">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" src="">
+</div>
 </body>
 </html>

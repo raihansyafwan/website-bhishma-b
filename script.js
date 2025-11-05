@@ -94,3 +94,37 @@ prevBtn.addEventListener('click', () => {
 // Inisialisasi tampilan saat halaman dimuat
 displayMembers(currentPage);
 updatePaginationButtons();
+
+// --- FUNGSI LIGHTBOX UNTUK GALERI ---
+
+function openLightbox(element) {
+    let lightbox = document.getElementById("lightbox");
+    let lightboxImg = document.getElementById("lightbox-img");
+    
+    // 1. Tampilkan Lightbox dan hilangkan kelas 'hidden'
+    lightbox.style.display = "flex";
+    lightbox.classList.remove('lightbox-hidden');
+    
+    // 2. Ambil sumber gambar dari gambar yang diklik (element.src)
+    lightboxImg.src = element.src;
+}
+
+// Dapatkan tombol tutup (X)
+let closeBtn = document.getElementsByClassName("close-btn")[0];
+let lightbox = document.getElementById("lightbox");
+
+// Aksi 1: Ketika tombol 'X' diklik, sembunyikan lightbox
+if (closeBtn) {
+    closeBtn.onclick = function() {
+      lightbox.style.display = "none";
+      lightbox.classList.add('lightbox-hidden');
+    }
+}
+
+// Aksi 2: Ketika pengguna mengklik di luar gambar (di latar belakang gelap), sembunyikan lightbox
+window.onclick = function(event) {
+  if (event.target == lightbox) {
+    lightbox.style.display = "none";
+    lightbox.classList.add('lightbox-hidden');
+  }
+}
