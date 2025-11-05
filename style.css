@@ -468,42 +468,6 @@ footer {
     font-size: 0.9em;
 }
 
-
-
-/* CONTAINER GRID KHUSUS HALAMAN DETAIL GALERI */
-.full-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Tampilkan 4 kolom di desktop */
-    gap: 20px;
-    margin: 40px auto;
-    max-width: 1200px;
-}
-
-.gallery-item-full img {
-    width: 100%;
-    height: 300px; /* Tinggi seragam */
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* Penyesuaian Responsif untuk Halaman Galeri Penuh */
-@media (max-width: 1024px) {
-    .full-gallery-grid {
-        grid-template-columns: repeat(3, 1fr); 
-    }
-}
-@media (max-width: 768px) {
-    .full-gallery-grid {
-        grid-template-columns: repeat(2, 1fr); 
-    }
-}
-@media (max-width: 480px) {
-    .full-gallery-grid {
-        grid-template-columns: 1fr; 
-    }
-}
-
 /* ================================================= */
 /* === FINAL MOBILE RESPONSIVENESS (MAX-WIDTH: 768PX) === */
 /* ================================================= */
