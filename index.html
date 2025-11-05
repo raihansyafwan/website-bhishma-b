@@ -510,8 +510,23 @@
         <p>© 2025 PGSD. Dibuat dengan <span style="color: red;">♥</span> untuk BHISHMA.</p>
     </footer>
 
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-btn close" aria-label="Close">&times;</button>
+  <button class="lightbox-btn prev" aria-label="Previous">
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="25 6 9 20 25 34" />
+    </svg>
+  </button>
+  <img class="lightbox-content" id="lightbox-img">
+  <button class="lightbox-btn next" aria-label="Next">
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 6 31 20 15 34" />
+    </svg>
+  </button>
+  <div id="caption"></div>
+</div>
+
     <script src="script.js"></script>
-
-
 </body>
 </html>

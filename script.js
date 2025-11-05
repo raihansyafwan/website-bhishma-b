@@ -94,3 +94,73 @@ prevBtn.addEventListener('click', () => {
 // Inisialisasi tampilan saat halaman dimuat
 displayMembers(currentPage);
 updatePaginationButtons();
+
+// ==== MODERN LIGHTBOX FUNCTIONALITY ====
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const captionText = document.getElementById('caption');
+const closeBtn = document.querySelector('.lightbox-btn.close');
+const nextLightboxBtn = document.querySelector('.lightbox-btn.next');
+const prevLightboxBtn = document.querySelector('.lightbox-btn.prev');
+
+const galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
+let currentIndex = 0;
+
+// Buka lightbox saat klik gambar
+galleryImages.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    document.body.classList.add('lightbox-active');
+    currentIndex = index;
+    showImage();
+  });
+});
+
+function showImage() {
+  const img = galleryImages[currentIndex];
+  lightboxImg.src = img.src;
+  captionText.innerHTML = img.alt || '';
+}
+
+// Tutup lightbox
+closeBtn.onclick = () => {
+  lightbox.style.display = 'none';
+  document.body.classList.remove('lightbox-active');
+};
+
+// Klik area luar untuk tutup
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) {
+    lightbox.style.display = 'none';
+    document.body.classList.remove('lightbox-active');
+  }
+});
+
+// Tombol next & prev
+nextBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % galleryImages.length;
+  showImage();
+});
+
+prevBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+  showImage();
+});
+
+// Navigasi keyboard
+document.addEventListener('keydown', (e) => {
+  if (lightbox.style.display === 'flex') {
+    if (e.key === 'ArrowRight') {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      showImage();
+    } else if (e.key === 'ArrowLeft') {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      showImage();
+    } else if (e.key === 'Escape') {
+      lightbox.style.display = 'none';
+      document.body.classList.remove('lightbox-active');
+    }
+  }
+});
